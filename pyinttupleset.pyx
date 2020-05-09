@@ -2,10 +2,10 @@
 
 from libcpp.set cimport set
 from libcpp.vector cimport vector
-from libc.stdint cimport uint16_t
+from libc.stdint cimport uint32_t
 from cython.operator cimport dereference as deref, preincrement as inc
 
-ctypedef vector[uint16_t] IntTuple
+ctypedef vector[uint32_t] IntTuple
 
 cdef extern from "int_tuple.h":
     pass

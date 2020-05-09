@@ -4,7 +4,7 @@ from pyinttupleset import PyIntTupleSet
 
 p = PyIntTupleSet()
 
-it = itertools.product(range(65535), repeat=10)
+it = itertools.product(range(100000), repeat=10)
 for _ in range(50000000):
     p.add(next(it))
 
