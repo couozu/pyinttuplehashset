@@ -2,10 +2,8 @@
 #include <algorithm>
 #include "stdint.h"
 
-struct Tuple {
-    std::vector<uint16_t> value;
-};
+typedef std::vector<uint16_t> IntTuple;
 
-inline bool operator<(const Tuple& a, const Tuple& b) {
-    return std::lexicographical_compare(a.value.begin(), a.value.end(), b.value.begin(), b.value.end());
+inline bool operator<(const IntTuple& a, const IntTuple& b) {
+    return std::lexicographical_compare(a.begin(), a.end(), b.begin(), b.end());
 }

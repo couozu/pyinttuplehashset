@@ -5,36 +5,43 @@ from libcpp.vector cimport vector
 from libc.stdint cimport uint16_t
 from cython.operator cimport dereference as deref, preincrement as inc
 
-cdef extern from "int_tuple.h":
-    cdef cppclass Tuple:
-        vector[uint16_t] value
-    bint operator<(Tuple&, Tuple&)
+ctypedef vector[uint16_t] IntTuple
 
-cdef class PyIntTupleHashSetIterator:
+cdef extern from "int_tuple.h":
+    pass
+
+cdef class PyIntTupleSetIterator:
     cdef:
-        set[Tuple].iterator it
-        set[Tuple].iterator end
+        set[IntTuple].iterator it
+        set[IntTuple].iterator end
 
     def __next__(self):
         if self.it == self.end:
             raise StopIteration()
         ret = deref(self.it)
         self.it = inc(self.it)
-        return ret.value
+        return ret
 
-cdef class PyIntTupleHashSet:
+cdef class PyIntTupleSet:
     cdef:
-        set[Tuple] data
+        set[IntTuple] data
 
     def add(self, val):
-        cdef Tuple t
-        t.value.resize(len(val))
+        cdef IntTuple t
+        t.resize(len(val))
         for i, v in enumerate(val):
-            t.value[i] = v
+            t[i] = v
         self.data.insert(t)
 
+    def __contains__(self, val):
+        cdef IntTuple t
+        t.resize(len(val))
+        for i, v in enumerate(val):
+            t[i] = v
+        return self.data.find(t) == self.data.end()
+
     def __iter__(self):
-        it = PyIntTupleHashSetIterator()
+        it = PyIntTupleSetIterator()
         it.it = self.data.begin()
         it.end = self.data.end()
         return it
