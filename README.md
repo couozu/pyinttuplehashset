@@ -1,7 +1,11 @@
 # pyinttupleset
+
 Set of integer tuples for python
+
 Supports adding, iterations and check presence
+
 Example:
+
 ```python
 import itertools
 import os
@@ -26,7 +30,9 @@ for i, e in enumerate(p):
     if i > 1000010:
         break
 ```
+
 Output:
+
 ```
 True
 False
@@ -45,4 +51,3 @@ memory
 [0, 0, 0, 0, 0, 0, 0, 0, 15, 16985]
 [0, 0, 0, 0, 0, 0, 0, 0, 15, 16986]
 ```
-
