@@ -2,7 +2,7 @@
 
 Set of integer tuples for python
 
-Supports adding, iterations and check presence
+Supports adding, iterations and presence check
 
 Example:
 
