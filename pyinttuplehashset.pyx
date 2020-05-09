@@ -2,11 +2,12 @@
 
 from libcpp.set cimport set
 from libcpp.vector cimport vector
+from libc.stdint cimport uint16_t
 from cython.operator cimport dereference as deref, preincrement as inc
 
 cdef extern from "int_tuple.h":
     cdef cppclass Tuple:
-        vector[int] value
+        vector[uint16_t] value
     bint operator<(Tuple&, Tuple&)
 
 cdef class PyIntTupleHashSetIterator:
@@ -37,3 +38,6 @@ cdef class PyIntTupleHashSet:
         it.it = self.data.begin()
         it.end = self.data.end()
         return it
+
+    def __len__(self):
+        return self.data.size()

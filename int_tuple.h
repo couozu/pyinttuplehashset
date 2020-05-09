@@ -1,8 +1,9 @@
 #include <vector>
 #include <algorithm>
+#include "stdint.h"
 
 struct Tuple {
-    std::vector<int> value;
+    std::vector<uint16_t> value;
 };
 
 inline bool operator<(const Tuple& a, const Tuple& b) {

@@ -1,12 +1,14 @@
+import itertools
+import os
+
 from pyinttuplehashset import PyIntTupleHashSet
 
 p = PyIntTupleHashSet()
 
-p.add([2, 3, 4])
-p.add([3, 5, 5])
-p.add([3, 4, 5])
-p.add([4, 22, 2])
-p.add([3, 5, 5])
+it = itertools.product(range(65535), repeat=10)
+for _ in range(50000000):
+    p.add(next(it))
 
-for i in p:
-    print(','.join(map(str, i)))
+print(f'{len(p)} objects use')
+os.system(f'pmap -p {os.getpid()} | tail -n 1')
+print('memory')
