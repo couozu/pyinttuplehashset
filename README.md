@@ -34,8 +34,8 @@ for i, e in enumerate(p):
 Output:
 
 ```
-True
 False
+True
 50000000 objects use
  total          5493612K
 memory

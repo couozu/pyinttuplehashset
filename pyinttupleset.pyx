@@ -38,7 +38,7 @@ cdef class PyIntTupleSet:
         t.resize(len(val))
         for i, v in enumerate(val):
             t[i] = v
-        return self.data.find(t) == self.data.end()
+        return self.data.find(t) != self.data.end()
 
     def __iter__(self):
         it = PyIntTupleSetIterator()
